@@ -1,0 +1,28 @@
+## System and generated files
+.idea
+.DS_Store
+.sass-cache
+
+## Directories
+log/
+dist/
+node_modules/
+bower_components/
+www/
+platforms/
+plugins/
+dist/
+.vscode/
+build/
+res/
+hooks/
+
+
+
+## Files
+result.xml
+npm-debug.log
+yarn-error.log
+*.log
+
+
