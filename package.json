@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack/config.dev.js",
     "build": "webpack --progress --mode production --config webpack/config.build.js",
-    "cordova": "webpack --progress --mode production --config webpack/config.cordova.js",
+    "cordova": "cross-env CORDOVA=true webpack --progress --mode production --config webpack/config.cordova.js",
     "lint": "eslint ./src/**/*.js",
     "fix": "eslint ./src/**/*.js --fix"
   },

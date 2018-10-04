@@ -17,7 +17,7 @@ module.exports = merge(webpackConfig, {
       ['www'],
       { root: path.join(__dirname, '../') }
     ),
-	new CopyWebpackPlugin([
+    new CopyWebpackPlugin([
       { from: 'assets', to: 'assets' }
     ]),
   ]

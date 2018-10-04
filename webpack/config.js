@@ -4,12 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // Is the current build a development build
 const IS_DEV = (process.env.NODE_ENV === 'dev')
+const IS_CORDOVA =(process.env.CORDOVA === 'true')
 
 const dirNode = path.join(__dirname, '../node_modules')
 const dirApp = path.join(__dirname, '../src')
 const dirAssets = path.join(__dirname, '../assets')
 
 const appHtmlTitle = 'Webpack4 Phaser3 Boilerplate'
+
+const cordovaScript='<script type="text/javascript" src="cordova.js"></script>';
 
 /**
  * Webpack Configuration
@@ -34,7 +37,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../index.ejs'),
-      title: appHtmlTitle
+      title: appHtmlTitle,
+      cordova: IS_CORDOVA ?cordovaScript:''
     })
   ],
   module: {
