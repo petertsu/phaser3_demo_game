@@ -2,6 +2,7 @@
 import Phaser from 'phaser'
 import Consts from '../consts'
 import { CandiesFactory } from '../sprites'
+import { QuestionsFactory } from '../sprites'
 
 export default class extends Phaser.Scene {
   constructor() {
@@ -41,10 +42,12 @@ export default class extends Phaser.Scene {
     this.add.image(-10,
       this.game.config.height - Consts.FLOOR_IMAGE_HEIGHT + 10, Consts.FLOOR_IMAGE_KEY)
       .setOrigin(0, 0);
+
     this._scoreText = this.add.text(110, 10, this._score, Consts.SCORE_TEXT_FONT_STYLE)
   }
 
   camdyClicked(pointer, gameObject, context) {
+    console.log('object down');
     this._clickMusic.play();
     this._score++
     gameObject.destroy()
@@ -53,19 +56,20 @@ export default class extends Phaser.Scene {
   create() {
     this._player = this._statics.create(40, this.game.config.height - 130, Consts.MONSTER_SPRITE_SHEET_KEY);
     this._player.anims.play(Consts.MONSTER_ANIMATION_KEY, true);
-    this._bgMusic.play();
+   // this._bgMusic.play();
   }
 
   update(timestamp, elapsed) {
     this._spawnCandyTimer += elapsed;
     this.rotateCandies();
     this.spawnCandy();
-    this._scoreText.text = (this._score)
+    this._scoreText.text = (this._score);
   }
 
   spawnCandy() {
     if (this._spawnCandyTimer >= Phaser.Math.Between(700, 1200)) {
       CandiesFactory.spawnCandy(this._candies);
+      QuestionsFactory.spawnQuestion(this);
       this._spawnCandyTimer = 0
     }
   }
