@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import Consts from '../consts'
 
 class CandiesFactory {
-  spawnCandy(group) {
+  spawnCandy(group,velocity) {
     var candyType = Phaser.Math.Between(0, 4)
     var startX = Phaser.Math.Between(Consts.CANDY_FRAME_WIDTH / 2 ,
       Consts.GAME_WIDTH - Consts.CANDY_FRAME_WIDTH /2 )
@@ -10,7 +10,7 @@ class CandiesFactory {
     var candy = group.create(startX, startY, Consts.CANDY_SPRITE_SHEET_KEY, candyType);
 
     candy.body.onWorldBounds = true;
-    candy.setVelocityY(200)
+    candy.setVelocityY(velocity)
       .setCollideWorldBounds(true)
       .setInteractive();
   }
