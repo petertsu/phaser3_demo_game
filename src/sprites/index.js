@@ -1,2 +1,2 @@
 export { default as CandiesFactory } from './candy'
-export { default as QuestionsFactory } from './question'
+export { default as TextAnswer } from './textAnswer'

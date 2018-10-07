@@ -78,7 +78,8 @@ export default class extends Phaser.Scene {
 
   spawnQuestion(){
     if(this._questionsTimer>= Phaser.Math.Between(2000, 5000)){
-      QuestionsFactory.spawnQuestion(this);
+      this.scene.pause(this.scene.key);
+      this.scene.launch('QuestionsScene');
       this._questionsTimer=0;
     }
   }
