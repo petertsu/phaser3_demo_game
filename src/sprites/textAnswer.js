@@ -10,6 +10,7 @@ export default class extends Phaser.GameObjects.Text {
             scene.game.events.emit(Consts.ANSWER_CLICKED_EVENT_KEY,this);
         }, this);
         this._correct = correct;
+        this._rotationSpeed = Phaser.Math.Between(0, 100) % 2 ===0 ? -0.01 : 0.01;
         scene.add.existing(this);
     }
 
@@ -17,7 +18,9 @@ export default class extends Phaser.GameObjects.Text {
         return this._correct;
     }
 
-    update(){
-        this.rotation += 0.007;
+    
+    preUpdate (time, delta)
+    {
+        this.rotation += this._rotationSpeed;
     }
 }
